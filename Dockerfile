@@ -11,7 +11,7 @@ RUN wget -c https://unmined.net/download/unmined-cli-linux-x64-dev/?tmstv=171783
 ENV PATH="${PATH}:/unmined"
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 
-WORKDIR /world
+WORKDIR /app
 
 COPY entrypoint.sh ./
 
