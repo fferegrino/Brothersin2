@@ -28,7 +28,7 @@ jobs:
               run: zip -r rendered.zip rendered
 
             - name: Upload rendered world
-              uses: actions/upload-artifact@v2
+              uses: actions/upload-artifact@v4
               with:
                 name: github-pages
                 path: rendered.zip
