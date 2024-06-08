@@ -18,9 +18,12 @@ jobs:
               run: docker run -e WORLD_URL=${WORLD_URL} -v ./rendered:/rendered unmined
               env:
                 WORLD_URL: ${{ secrets.WORLD_URL }}
-            
+
+            - name: Zip rendered world
+              run: zip -r rendered.zip rendered
+
             - name: Upload rendered world
               uses: actions/upload-artifact@v2
               with:
-                name: rendered-world
-                path: ./rendered
+                name: rendered
+                path: rendered.zip
