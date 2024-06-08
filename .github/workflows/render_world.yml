@@ -4,7 +4,7 @@ on:
     workflow_dispatch:
 
 jobs:
-    build-and-execute:
+    render_world:
         runs-on: ubuntu-latest
 
         steps:
@@ -27,3 +27,12 @@ jobs:
               with:
                 name: rendered
                 path: rendered.zip
+
+            - name: Upload page artifacts
+              uses: actions/upload-pages-artifact@v1
+              with:
+                path: "./rendered"
+
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
