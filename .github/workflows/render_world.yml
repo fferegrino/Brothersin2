@@ -3,6 +3,11 @@ name: Build and Execute Docker Image
 on:
     workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
     render_world:
         runs-on: ubuntu-latest
