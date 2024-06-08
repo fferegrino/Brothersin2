@@ -1,0 +1,26 @@
+name: Build and Execute Docker Image
+
+on:
+    workflow_dispatch:
+
+jobs:
+    build-and-execute:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Build Docker image
+              run: docker build -t unmined .
+
+            - name: Run command in Docker image
+              run: docker run -e WORLD_URL=${WORLD_URL} -v ./rendered:/rendered unmined
+              env:
+                WORLD_URL: ${{ secrets.WORLD_URL }}
+            
+            - name: Upload rendered world
+              uses: actions/upload-artifact@v2
+              with:
+                name: rendered-world
+                path: ./rendered
