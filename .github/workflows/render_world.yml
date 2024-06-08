@@ -21,9 +21,7 @@ jobs:
 
             - name: Run command in Docker image
               run: |
-                mkdir -p rendered
                 docker run -e WORLD_URL=${WORLD_URL} -v ./rendered:/rendered unmined
-                chmod -R 777 rendered
               env:
                 WORLD_URL: ${{ secrets.WORLD_URL }}
 
